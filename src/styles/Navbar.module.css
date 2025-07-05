@@ -1,0 +1,497 @@
+/* Base Styles */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.header.scrolled {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.topBar {
+  background: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.nav {
+  position: relative;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.03);
+}
+
+.logoHighlight {
+  color: #3498db;
+}
+
+/* Navigation Links */
+.navLinks {
+  display: flex;
+  gap: 1.5rem;
+  margin-right: auto;
+}
+
+.navItem {
+  position: relative;
+}
+
+.navLink {
+  color: #4a5568;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: #3498db;
+}
+
+.dropdownIcon {
+  transition: transform 0.2s ease;
+}
+
+.navItem:hover .dropdownIcon {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.2s ease;
+  z-index: 100;
+}
+
+.navItem:hover .dropdownMenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdownLink {
+  display: block;
+  padding: 0.5rem 1.5rem;
+  color: #4a5568;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.dropdownLink:hover {
+  background: #f7fafc;
+  color: #3498db;
+}
+
+/* Search */
+.searchContainer {
+  position: relative;
+  flex-grow: 1;
+  max-width: 400px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #718096;
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background: #f8fafc;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #3498db;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* User Actions */
+.userActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.userDropdown {
+  position: relative;
+}
+
+.userButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: #4a5568;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.userButton:hover {
+  background: #f7fafc;
+}
+
+.userDropdownMenu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  min-width: 180px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.2s ease;
+  z-index: 100;
+}
+
+.userDropdown:hover .userDropdownMenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.userDropdownLink {
+  display: block;
+  padding: 0.5rem 1.5rem;
+  color: #4a5568;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.userDropdownLink:hover {
+  background: #f7fafc;
+  color: #3498db;
+}
+
+.authButton {
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.authButton {
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.authButton.primary {
+  background: #3498db;
+  color: white;
+  border: none;
+}
+
+.authButton.primary:hover {
+  background: #2980b9;
+}
+
+.authButton:hover {
+  background: #edf2f7;
+}
+
+.cartButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f8fafc;
+  color: #4a5568;
+  transition: all 0.2s ease;
+}
+
+.cartButton:hover {
+  background: #edf2f7;
+  color: #3498db;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #e74c3c;
+  color: white;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* Mobile Menu Button */
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: #4a5568;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  z-index: 1002;
+}
+
+.menuButton:hover {
+  background: #f8fafc;
+}
+
+/* Mobile Search */
+.mobileSearch {
+  display: none;
+  padding: 0 1.5rem 1rem;
+  background: white;
+  border-top: 1px solid #edf2f7;
+}
+
+.searchWrapper {
+  position: relative;
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  z-index: 1001;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+}
+
+.mobileMenu.open {
+  transform: translateX(0);
+}
+
+.mobileMenuContent {
+  padding: 1.5rem;
+  padding-top: 5rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.mobileUser {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #edf2f7;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.mobileAuth {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.mobileAuthButton {
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.mobileAuthButton {
+  border: 1px solid #e2e8f0;
+  color: #4a5568;
+  background: #f8fafc;
+}
+
+.mobileAuthButton.primary {
+  background: #3498db;
+  color: white;
+  border: none;
+}
+
+.mobileNavLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobileLink {
+  display: block;
+  padding: 1rem 0;
+  color: #4a5568;
+  text-decoration: none;
+  font-size: 1rem;
+  border-bottom: 1px solid #edf2f7;
+  transition: color 0.2s ease;
+}
+
+.mobileLink:hover {
+  color: #3498db;
+}
+
+.mobileLink span {
+  color: #3498db;
+  font-weight: 500;
+}
+
+.mobileLogout {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  color: #e74c3c;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.mobileLogout:hover {
+  background: #fef2f2;
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.mobileMenu.open + .overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .searchContainer {
+    display: none;
+  }
+  
+  .mobileSearch {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .navLinks, .userDropdownMenu {
+    display: none;
+  }
+  
+  .menuButton {
+    display: block;
+  }
+  
+  .authButton {
+    padding: 0.5rem;
+    font-size: 0;
+  }
+  
+  .authButton::before {
+    content: attr(data-label);
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+  
+  .topBar p {
+    font-size: 0.75rem;
+  }
+  
+  .mobileAuth {
+    grid-template-columns: 1fr;
+  }
+}

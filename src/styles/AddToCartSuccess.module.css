@@ -1,0 +1,83 @@
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 1000;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideIn 0.3s ease-out forwards;
+  border-left: 4px solid #4CAF50;
+  max-width: 350px;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.icon {
+  color: #4CAF50;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.message {
+  font-size: 14px;
+  color: #333;
+}
+
+.message strong {
+  font-weight: 600;
+  color: #000;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.closeButton:hover {
+  color: #666;
+}
+
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: #4CAF50;
+  width: 100%;
+  transform-origin: left;
+  animation: progressBarShrink linear forwards;
+}
+
+@keyframes progressBarShrink {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}

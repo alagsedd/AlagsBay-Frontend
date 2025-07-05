@@ -1,0 +1,125 @@
+.searchContainer {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 50px;
+  padding: 8px 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.searchContainer.active .searchForm {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 112, 243, 0.3);
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 12px 8px;
+  font-size: 16px;
+  outline: none;
+  color: #333;
+}
+
+.searchInput::placeholder {
+  color: #999;
+}
+
+.searchButton {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchButton:hover {
+  color: #0070f3;
+}
+
+.recentSearches {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 12px;
+  margin-top: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 16px 0;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeIn 0.2s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sectionHeader {
+  padding: 0 16px 8px;
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.searchItems {
+  display: flex;
+  flex-direction: column;
+}
+
+.searchItem {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 12px 24px;
+  font-size: 15px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.searchItem:hover {
+  background: #f8f8f8;
+  color: #0070f3;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .searchContainer {
+    padding: 0 16px;
+  }
+  
+  .searchForm {
+    padding: 6px 12px;
+  }
+  
+  .searchInput {
+    padding: 10px 6px;
+    font-size: 15px;
+  }
+  
+  .recentSearches {
+    width: calc(100% - 32px);
+    left: 16px;
+    right: 16px;
+  }
+}

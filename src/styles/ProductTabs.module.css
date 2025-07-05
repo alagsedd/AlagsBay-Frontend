@@ -1,0 +1,58 @@
+/* Main container */
+.tabsContainer {
+  margin: 2rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Tabs navigation */
+.tabsNav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Tab links */
+.tabLink {
+  padding: 0.75rem 1.25rem;
+  color: #4b5563;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  transition: all 0.2s ease;
+  border-radius: 6px 6px 0 0;
+}
+
+.tabLink:hover {
+  color: #4f46e5;
+  background-color: #f5f3ff;
+}
+
+/* Active tab */
+.activeTab {
+  color: #4f46e5;
+  background-color: #f5f3ff;
+}
+
+.activeTab::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #4f46e5;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .tabsNav {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  
+  .tabLink {
+    white-space: nowrap;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+}

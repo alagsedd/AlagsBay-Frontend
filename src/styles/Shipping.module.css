@@ -1,0 +1,203 @@
+/* Shipping Container */
+.shippingContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: #333;
+}
+
+.sectionTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: #1a1a1a;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+/* Shipping Options */
+.shippingOptions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.optionCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.optionCard:hover {
+  border-color: #4f46e5;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.optionHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.optionIcon {
+  width: 40px;
+  height: 40px;
+  background: #e0e7ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4f46e5;
+}
+
+.icon {
+  font-size: 1.25rem;
+}
+
+.optionTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.optionDetails {
+  padding-left: 0.5rem;
+}
+
+.optionPrice {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #4f46e5;
+  margin: 0.5rem 0;
+}
+
+.optionTime {
+  color: #6b7280;
+  margin: 0.5rem 0;
+}
+
+.optionDescription {
+  color: #4b5563;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Delivery Info */
+.deliveryInfo {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.infoList {
+  padding-left: 1.5rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.infoList li {
+  margin-bottom: 0.5rem;
+}
+
+/* Policies */
+.policiesSection {
+  margin-bottom: 2rem;
+}
+
+.policiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.policyCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.policyCard:hover {
+  border-color: #4f46e5;
+}
+
+.policyIcon {
+  width: 40px;
+  height: 40px;
+  background: #e0e7ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4f46e5;
+  margin-bottom: 1rem;
+}
+
+.policyTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: #1a1a1a;
+}
+
+.policyContent {
+  color: #4b5563;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* FAQ Section */
+.faqSection {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.faqItem {
+  margin-bottom: 1.5rem;
+}
+
+.faqItem:last-child {
+  margin-bottom: 0;
+}
+
+.faqQuestion {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.faqAnswer {
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .shippingOptions {
+    grid-template-columns: 1fr;
+  }
+  
+  .policiesGrid {
+    grid-template-columns: 1fr;
+  }
+}
