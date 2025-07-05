@@ -52,7 +52,7 @@ const ExploreMore = () => {
     },
     onError: (error) => {
       console.error("Error adding item:", error);
-  },
+    },
     onSettled: () => {
       setAddingProductId(null);
     },
@@ -148,9 +148,9 @@ const ExploreMore = () => {
                 <span className={styles.price}>
                   ${product.unit_price.toFixed(2)}
                 </span>
-                {product.original_price && (
+                {product.unit_price && (
                   <span className={styles.originalPrice}>
-                    ${product.original_price.toFixed(2)}
+                    ${product.unit_price.toFixed(2)}
                   </span>
                 )}
               </div>
