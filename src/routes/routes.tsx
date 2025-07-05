@@ -11,12 +11,14 @@ import MainLayout from "./MainLayout";
 import ProductDetailLayout from "./ProductDetailLayout";
 import ProductDescription from "../components/ProductDescription";
 import ThankYou from "../components/ThankYou";
-import PaystackPaymentButton from "../components/PaystackCheckout";
+import ErrorPage from "../pages/ErrorPage";
+import CheckoutPage from "../pages/CheckoutPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Home /> },
       { path: "cart", element: <Cart /> },
@@ -34,7 +36,7 @@ export const router = createBrowserRouter([
       { path: "sign-in", element: <SignIn /> },
       { path: "sign-up", element: <SignUp /> },
       { path: "thank-you", element: <ThankYou /> },
-      { path: "checkout", element: <PaystackPaymentButton /> },
+      { path: "checkout", element: <CheckoutPage /> },
     ],
   },
 ]);

@@ -29,10 +29,15 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMenu = (e) => {
-    if (e) e.stopPropagation();
-    setIsMenuOpen(!isMenuOpen);
-    document.body.style.overflow = !isMenuOpen ? "hidden" : "auto";
+  const toggleMenu = (e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
+    }
+    setIsMenuOpen((prevIsMenuOpen) => {
+      const newIsMenuOpen = !prevIsMenuOpen;
+      document.body.style.overflow = newIsMenuOpen ? "hidden" : "auto";
+      return newIsMenuOpen;
+    });
   };
 
   const handleLogout = () => {
@@ -48,9 +53,15 @@ const NavBar = () => {
 
   // Close menu when clicking outside
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (isMenuOpen && !e.target.closest(`.${styles.mobileMenu}`)) {
-        toggleMenu();
+    const handleClickOutside = (e: MouseEvent) => {
+      // Add type for 'e' as MouseEvent
+      if (
+        isMenuOpen &&
+        e.target &&
+        e.target instanceof HTMLElement && // ADDED: Type narrowing check
+        !e.target.closest(`.${styles.mobileMenu}`)
+      ) {
+        toggleMenu(); // Call without event object, as it's optional now
       }
     };
     document.addEventListener("click", handleClickOutside);
@@ -68,7 +79,7 @@ const NavBar = () => {
           {/* Mobile Menu Button */}
           <button
             className={styles.menuButton}
-            onClick={toggleMenu}
+            onClick={toggleMenu} // Event 'e' is passed automatically here
             aria-label="Menu"
             aria-expanded={isMenuOpen}
           >
@@ -117,7 +128,7 @@ const NavBar = () => {
               type="text"
               placeholder="Search products..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => setSearchQuery(e.target.value)} // 'e' here is React.ChangeEvent<HTMLInputElement>
               className={styles.searchInput}
               aria-label="Search products"
             />
@@ -180,7 +191,7 @@ const NavBar = () => {
               type="text"
               placeholder="Search products..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => setSearchQuery(e.target.value)} // 'e' here is React.ChangeEvent<HTMLInputElement>
               className={styles.searchInput}
               aria-label="Search products"
             />
@@ -266,7 +277,7 @@ const NavBar = () => {
                   <button
                     onClick={() => {
                       handleLogout();
-                      toggleMenu();
+                      toggleMenu(); // Call without event object, as it's optional now
                     }}
                     className={styles.mobileLogout}
                   >
@@ -282,7 +293,7 @@ const NavBar = () => {
         {isMenuOpen && (
           <div
             className={styles.overlay}
-            onClick={toggleMenu}
+            onClick={toggleMenu} // Event 'e' is passed automatically here
             aria-hidden="true"
           />
         )}
