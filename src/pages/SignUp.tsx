@@ -12,12 +12,6 @@ interface FormData {
   email: string;
   // Removed firstName, lastName, and birthDate as per your interface
 }
-// Define the expected response from Djoser's /auth/users/ (registration)
-interface SignUpResponse {
-  id: number;
-  username: string;
-  email: string;
-}
 interface LoginResponse {
   access: string;
   refresh: string;
