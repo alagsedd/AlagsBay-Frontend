@@ -2,7 +2,7 @@ import { FiFacebook, FiGithub, FiTwitter, FiArrowRight } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../styles/SignIn.module.css";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import apiClient from "../services/api-client";
 import { useMutation } from "@tanstack/react-query";
 import { useContext } from "react";
 import AuthContext from "../state-management/contexts/authContext";
@@ -29,8 +29,8 @@ const SignIn = () => {
 
   const loginMutation = useMutation<LoginResponse, Error, FormData>({
     mutationFn: (formData: FormData) =>
-      axios
-        .post<LoginResponse>("http://127.0.0.1:8000/auth/jwt/create/", formData)
+      apiClient
+        .post<LoginResponse>("/auth/jwt/create/", formData)
         .then((res) => res.data),
     onSuccess: (postResponse: LoginResponse, sentCredentials) => {
       localStorage.setItem("accessToken", postResponse.access);

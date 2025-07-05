@@ -5,7 +5,7 @@ import { FiArrowRight, FiShoppingCart, FiEye } from "react-icons/fi";
 import { useContext, useState } from "react";
 import CartCountContext from "../state-management/contexts/cartCountContext";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import apiClient from "../services/api-client"; // ✅ import this instead of using axios
 
 interface AddCartProps {
   productId: number;
@@ -15,8 +15,6 @@ interface AddCartProps {
 interface CartResponse {
   id: string;
 }
-
-const API_BASE_URL = "http://127.0.0.1:8000/store";
 
 const ExploreMore = () => {
   const [addingProductId, setAddingProductId] = useState<number | null>(null);
@@ -28,21 +26,19 @@ const ExploreMore = () => {
       let cartId = localStorage.getItem("cartId");
 
       if (!cartId) {
-        const cartResponse = await axios.post<CartResponse>(
-          `${API_BASE_URL}/carts/`
+        const cartResponse = await apiClient.post<CartResponse>(
+          "/store/carts/"
         );
+
         cartId = cartResponse.data.id;
         if (!cartId) throw new Error("Failed to get cart ID");
         localStorage.setItem("cartId", cartId);
       }
 
-      const response = await axios.post(
-        `${API_BASE_URL}/carts/${cartId}/items/`,
-        {
-          product_id: cartObject.productId,
-          quantity: cartObject.quantity,
-        }
-      );
+      const response = await apiClient.post(`/store/carts/${cartId}/items/`, {
+        product_id: cartObject.productId,
+        quantity: cartObject.quantity,
+      });
 
       return response.data;
     },

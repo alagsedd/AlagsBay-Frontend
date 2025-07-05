@@ -100,7 +100,7 @@ const Cart = () => {
                 <div key={item.id} className={styles.cartItem}>
                   <div className={styles.itemImageContainer}>
                     <img
-                      src={`http://127.0.0.1:8000${item.product.images[0]?.image}`}
+                      src={`https://alagsbay-backend-1.onrender.com${item.product.images[0]?.image}`}
                       alt={item.product.title}
                       className={styles.itemImage}
                     />
