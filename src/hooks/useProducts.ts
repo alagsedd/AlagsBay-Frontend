@@ -1,26 +1,26 @@
-import { useQuery } from "@tanstack/react-query"
-import axios from "axios"
+import { useQuery } from "@tanstack/react-query";
+import apiClient from "../services/api-client"; // use your configured axios instance
 
 interface Image {
-    id: number
-    image: string
+  id: number;
+  image: string;
 }
+
 interface Product {
-    id: number
-    title: string
-    unit_price:number
-    images: Image[]
+  id: number;
+  title: string;
+  unit_price: number;
+  images: Image[];
 }
 
 const useProducts = () => {
-    const fetchProducts = () =>
-    axios.get<Product[]>('http://127.0.0.1:8000/store/products/')
-    .then(res => res.data)
+  const fetchProducts = () =>
+    apiClient.get<Product[]>("store/products/").then((res) => res.data); // No localhost, no hardcoding
 
-    return useQuery<Product[], Error>({
-        queryKey: ['products'],
-        queryFn: fetchProducts
-    })
-}
+  return useQuery<Product[], Error>({
+    queryKey: ["products"],
+    queryFn: fetchProducts,
+  });
+};
 
-export default useProducts
+export default useProducts;

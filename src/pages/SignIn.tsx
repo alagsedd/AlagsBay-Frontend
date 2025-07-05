@@ -18,7 +18,7 @@ interface LoginResponse {
 }
 
 const SignIn = () => {
-  const { authState, authStateDispatch } = useContext(AuthContext);
+  const { authStateDispatch } = useContext(AuthContext);
 
   const {
     register,

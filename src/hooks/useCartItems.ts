@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import apiClient from "../services/api-client"; // Use configured axios instance
 
 interface Image {
   image: string;
@@ -18,13 +18,14 @@ export interface CartItem {
 
 const useCartItems = (cartId: string | null) => {
   const fetchCarts = () =>
-    axios
-      .get<CartItem[]>(`http://127.0.0.1:8000/store/carts/${cartId}/items/`)
+    apiClient
+      .get<CartItem[]>(`store/carts/${cartId}/items/`)
       .then((res) => res.data);
 
   return useQuery<CartItem[], Error>({
     queryKey: ["cartItems", cartId],
-    queryFn: fetchCarts
+    queryFn: fetchCarts,
+    enabled: !!cartId, // Prevents running if cartId is null
   });
 };
 

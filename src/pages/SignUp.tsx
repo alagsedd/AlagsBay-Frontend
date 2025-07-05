@@ -78,12 +78,11 @@ const SignUp = () => {
           throw err;
         });
     },
-    onSuccess: (signUpDataResponse: FormData, sentData) => {
+    onSuccess: (_, sentData) => {
       const loginCredentials = {
         username: sentData.username,
         password: sentData.password,
       };
-
       LoginMutation.mutate(loginCredentials);
     },
   }); // ✅ This closing brace and parenthesis were missing
