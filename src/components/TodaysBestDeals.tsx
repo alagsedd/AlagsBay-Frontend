@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "../styles/TodayBestDeals.module.css";
 
 import product1 from "../assets/images/bestdeals/headphones.png";

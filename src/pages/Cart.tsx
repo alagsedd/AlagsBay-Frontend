@@ -8,10 +8,37 @@ import { useMutation } from "@tanstack/react-query";
 import apiClient from "../services/api-client";
 
 const Cart = () => {
-  const { count } = useContext(CartCountContext);
+  const { count, cartCountDispatch } = useContext(CartCountContext);
   const cartId = localStorage.getItem("cartId");
   const { data: cartItems, error, isLoading, refetch } = useCartItems(cartId);
   const [isProcessing, setIsProcessing] = useState(false);
+
+  // Declare mutations at the top level before any conditional returns
+  const updateQuantity = useMutation({
+    mutationFn: async ({
+      itemId,
+      newQuantity,
+    }: {
+      itemId: number;
+      newQuantity: number;
+    }) => {
+      if (newQuantity < 1) return;
+      await apiClient.patch(`/store/carts/${cartId}/items/${itemId}/`, {
+        quantity: newQuantity,
+      });
+    },
+    onSuccess: () => refetch(),
+  });
+
+  const removeItem = useMutation({
+    mutationFn: async (itemId: number) => {
+      await apiClient.delete(`/store/carts/${cartId}/items/${itemId}/`);
+    },
+    onSuccess: () => {
+      refetch();
+      cartCountDispatch({ type: "DELETE" });
+    },
+  });
 
   if (!cartId) {
     return (
@@ -29,36 +56,6 @@ const Cart = () => {
       </div>
     );
   }
-
-  // Mutation for updating item quantity
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const updateQuantity = useMutation({
-    mutationFn: async ({
-      itemId,
-      newQuantity,
-    }: {
-      itemId: number;
-      newQuantity: number;
-    }) => {
-      if (newQuantity < 1) return;
-      await apiClient.patch(`/store/carts/${cartId}/items/${itemId}/`, {
-        quantity: newQuantity,
-      });
-    },
-    onSuccess: () => refetch(),
-  });
-
-  // Mutation for removing item
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const removeItem = useMutation({
-    mutationFn: async (itemId: number) => {
-      await apiClient.delete(`/store/carts/${cartId}/items/${itemId}/`);
-    },
-    onSuccess: () => {
-      refetch();
-      setCount((prev) => prev - 1);
-    },
-  });
 
   // Calculate cart totals
   const subtotal =
