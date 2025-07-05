@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 // import { useRouter } from 'next/router';
 import styles from "../styles/Search.module.css";
 
@@ -8,26 +8,29 @@ const SearchBar = () => {
   const searchRef = useRef(null);
   //   const router = useRouter();
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (searchRef.current && !searchRef.current.contains(event.target)) {
-        setIsFocused(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  // useEffect(() => {
+  //   function handleClickOutside(event) {
+  //     if (searchRef.current && !searchRef.current.contains(event.target)) {
+  //       setIsFocused(false);
+  //     }
+  //   }
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => document.removeEventListener("mousedown", handleClickOutside);
+  // }, []);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-  };
+  // const handleSearch = (e) => {
+  //   e.preventDefault();
+  // };
 
   return (
     <div
       className={`${styles.searchContainer} ${isFocused ? styles.active : ""}`}
       ref={searchRef}
     >
-      <form onSubmit={handleSearch} className={styles.searchForm}>
+      <form
+        onSubmit={() => console.log("Clicked")}
+        className={styles.searchForm}
+      >
         <input
           type="text"
           value={query}
